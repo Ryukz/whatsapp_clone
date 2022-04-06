@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 class ChatModels {
   late final String name;
   late final String message;
@@ -16,18 +18,15 @@ List<ChatModels> dummydata = [
       name: "Scarlet",
       message: "Hey! What are you doing",
       time: "11:07 am",
-      imageUrl:
-          "https://www.finetoshine.com/wp-content/uploads/2020/07/111-Best-Whatsapp-DP-Images-For-Girls-Stylish-Girls.png"),
+      imageUrl: "images/Scarlet.png"),
   ChatModels(
       name: "Alex",
       message: "Call me ASAP!",
       time: "9:50 pm",
-      imageUrl:
-          "https://smileworld.in/wp-content/uploads/2020/06/Cool-Boy-Hidden-Face-DP-Images-for-Whatsapp.jpg"),
+      imageUrl: "images/Alex.jpg"),
   ChatModels(
       name: "Natasha",
       message: "Hey wanna date!",
       time: "12:07 am",
-      imageUrl:
-          "https://1.bp.blogspot.com/-KnsRj0Xv6LQ/XmoQ4H2Lf9I/AAAAAAAAPZU/sWgscMHUVnUhYJLxNqTdTi2NGxPIgzXGQCLcBGAsYHQ/s1600/Whatsapp%2BDP%2BImages%2BFor%2BGirl%2B%252818%2529.jpg")
+      imageUrl: "images/Natasha.jpg")
 ];

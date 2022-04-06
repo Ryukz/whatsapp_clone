@@ -43,6 +43,10 @@ class _CameraPageState extends State<CameraPage> {
         children: [
           CameraPreview(cameraController!),
           ElevatedButton.icon(
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.resolveWith(
+              (states) => Color.fromRGBO(7, 94, 84, 1),
+            )),
             //image capture button
             onPressed: () async {
               try {

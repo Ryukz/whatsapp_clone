@@ -1,10 +1,16 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, must_be_immutable, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutter_clone/models/chatModels.dart';
 
+late List<ChatModels> updatedData;
+
 class ChatPage extends StatefulWidget {
-  const ChatPage({Key? key}) : super(key: key);
+  late List<ChatModels> dataToShow;
+
+  ChatPage(this.dataToShow) {
+    updatedData = dataToShow;
+  }
 
   @override
   State<ChatPage> createState() => _ChatPageState();
@@ -13,34 +19,41 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: dummydata.length,
-        itemBuilder: (context, index) {
-          return Column(
-            children: [
-              Divider(
-                height: 2.0,
-                thickness: 1.0,
-              ),
-              ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage(dummydata[index].imageUrl),
-                  radius: 20,
+    //print(updatedData.length);
+    if (updatedData.isNotEmpty) {
+      return ListView.builder(
+          itemCount: updatedData.length,
+          itemBuilder: (context, index) {
+            return Column(
+              children: [
+                Divider(
+                  height: 2.0,
+                  thickness: 1.0,
                 ),
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      dummydata[index].name,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    )
-                  ],
+                ListTile(
+                  leading: CircleAvatar(
+                    backgroundImage: AssetImage(updatedData[index].imageUrl),
+                    radius: 20,
+                  ),
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        updatedData[index].name,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                  subtitle: Text(updatedData[index].message),
+                  trailing: Text(updatedData[index].time),
                 ),
-                subtitle: Text(dummydata[index].message),
-                trailing: Text(dummydata[index].time),
-              ),
-            ],
-          );
-        });
+              ],
+            );
+          });
+    } else {
+      return Center(
+        child: Text('No Result Found'),
+      );
+    }
   }
 }
